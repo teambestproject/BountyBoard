@@ -23,7 +23,7 @@ const firebaseConfig = {
 
 
 
-console.log(firebaseConfig);
+// console.log(firebaseConfig);
 
 firebase.initializeApp(firebaseConfig);
 
@@ -45,6 +45,7 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
+      
       console.log("user", user)
     })
   }
