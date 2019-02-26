@@ -3,6 +3,7 @@ import "./App.css"
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import Bounty from "./Components/Bounty"
+import Navbar from "./Components/Navbar";
 require('dotenv').config();
 
 const {
@@ -46,8 +47,6 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
-      
-      console.log("user", user)
     })
   }
 
@@ -63,7 +62,7 @@ class App extends Component {
               alt="profile"
               src={firebase.auth().currentUser.photoURL}
             />
-
+          <Navbar></Navbar>
           <Bounty>
             <Bounty.BountyTitle></Bounty.BountyTitle>
             <Bounty.BountyInfo></Bounty.BountyInfo>
