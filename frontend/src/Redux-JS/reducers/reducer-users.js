@@ -1,5 +1,5 @@
 
-export default function(); {
+export default function() {
     return [
         {
             id: 1,
@@ -36,6 +36,6 @@ export default function(); {
             age: 26,
             description: "Loves to win in video games",
             thumbnail: "https://avatars0.githubusercontent.com/u/37358738?s=460&v=4"
-        },
+        }
     ]
 }
