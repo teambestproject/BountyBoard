@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "./App.css"
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import Bounty from "./Components/Bounty"
 require('dotenv').config();
 
 const {
@@ -13,11 +14,11 @@ const {
 	REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 } = process.env;
 const firebaseConfig = {
-	apiKey: REACT_APP_FIREBASE_API_KEY.slice(0,-1),
-	authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN.slice(0,-1),
-	databaseURL: REACT_APP_FIREBASE_DATABASE_URL.slice(0,-1),
-	projectId: REACT_APP_FIREBASE_PROJECT_ID.slice(0,-1),
-	storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET.slice(0,-1),
+	apiKey: REACT_APP_FIREBASE_API_KEY,
+	authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+	databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+	projectId: REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
 	messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
 
@@ -62,6 +63,12 @@ class App extends Component {
               alt="profile"
               src={firebase.auth().currentUser.photoURL}
             />
+
+          <Bounty>
+            <Bounty.BountyTitle></Bounty.BountyTitle>
+            <Bounty.BountyInfo></Bounty.BountyInfo>
+            <Bounty.BountyReward></Bounty.BountyReward>
+          </Bounty>
           </span>
         ) : (
           <StyledFirebaseAuth
