@@ -4,104 +4,189 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../Redux-JS/actions/authentication';
 import classnames from 'classnames';
 import "./style.css";
+import firebase from "firebase"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+require('dotenv').config();
+
+
+// class Login extends Component {
+//     constructor() {
+//         super();
+//         this.state = {
+//             email: '',
+//             password: '',
+//             errors: {}
+//         }
+//         this.handleInputChange = this.handleInputChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+
+//     handleInputChange(e) {
+//         this.setState({
+//             [e.target.name]: e.target.value
+//         });
+//     }
+
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         const user = {
+//             email: this.state.email,
+//             password: this.state.password
+//         }
+//         this.props.loginUser(user);
+//     }
+    
+//     componentDidMount() {
+//         if(this.props.auth.isAuthenticated) {
+//             this.props.history.push('/')
+//         }
+//     }
+
+//     componentWillReceiveProps(nextProps) {
+//         if(nextProps.auth.isAuthenticated) {
+//             this.props.history.push('/')
+//         }
+//         if(nextProps.errors) {
+//             this.setState({
+//                 errors: nextProps.errors
+//             });
+//         }
+//     }
+
+
+//     render() {
+//         const {errors} = this.state;
+//         return(
+//             <div className="container" style={{marginTop: '50px', width: '700px'}}>
+//                 <h2 style={{marginBottom: '40px'}}>Login</h2>
+//                 <form onSubmit={this.handleSubmit}>
+//                     <div className="form-group">
+//                         <input 
+//                         type="email"
+//                         placeholder="Email"
+//                         className={classnames('form-control form-control-lg', {
+//                             'is-invalid': errors.email
+//                         })}
+//                         name="email"
+//                         onChange={this.handleInputChange}
+//                         value={this.state.email}
+//                         />
+//                         {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+//                     </div>
+//                     <div className="form-group">
+//                         <input 
+//                         type="password"
+//                         placeholder="Password"
+//                         className={classnames('form-control form-control-lg', {
+//                             'is-invalid': errors.password
+//                         })}
+//                         name="password"
+//                         onChange={this.handleInputChange}
+//                         value={this.state.password}
+//                         />
+//                         {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+//                     </div>
+//                     <div className="form-group">
+//                         <button type="submit" className="btn btn-primary">
+//                             Login
+//                         </button>
+//                     </div>
+//                 </form>
+//             </div>
+//         )
+//     }
+// }
+
+// Login.propTypes = {
+//     loginUser: PropTypes.func.isRequired,
+//     auth: PropTypes.object.isRequired,
+//     errors: PropTypes.object.isRequired
+// }
+
+// const mapStateToProps = (state) => ({
+//     auth: state.auth,
+//     errors: state.errors
+// })
+
+const {
+	REACT_APP_FIREBASE_API_KEY,
+	REACT_APP_FIREBASE_AUTH_DOMAIN,
+	REACT_APP_FIREBASE_DATABASE_URL,
+	REACT_APP_FIREBASE_PROJECT_ID,
+	REACT_APP_FIREBASE_STORAGE_BUCKET,
+	REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+} = process.env;
+const firebaseConfig = {
+	apiKey: REACT_APP_FIREBASE_API_KEY,
+	authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+	databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+	projectId: REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+};
+
+
+firebase.initializeApp(firebaseConfig);
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: '',
-            password: '',
-            errors: {}
-        }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+  state = { isSignedIn: false }
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccess: () => false
     }
+  }
 
-    handleInputChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
+      
+      if (!!user){     
+        sessionStorage.setItem('usersignedin', user.displayName);
+        sessionStorage.setItem('usersphoto',user.photoURL);
+        sessionStorage.setItem('issignIN',!!user);
 
-    handleSubmit(e) {
-        e.preventDefault();
-        const user = {
-            email: this.state.email,
-            password: this.state.password
-        }
-        this.props.loginUser(user);
-    }
+      }else {
+          sessionStorage.setItem('issignIN',false);
+      }
+      console.log(
+    sessionStorage.getItem('issignIN')
+      );
+    })
     
-    componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/')
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/')
-        }
-        if(nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
+  }
 
 
-    render() {
-        const {errors} = this.state;
-        return(
-            <div className="container" style={{marginTop: '50px', width: '700px'}}>
-                <h2 style={{marginBottom: '40px'}}>Login</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <input 
-                        type="email"
-                        placeholder="Email"
-                        className={classnames('form-control form-control-lg', {
-                            'is-invalid': errors.email
-                        })}
-                        name="email"
-                        onChange={this.handleInputChange}
-                        value={this.state.email}
-                        />
-                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                    </div>
-                    <div className="form-group">
-                        <input 
-                        type="password"
-                        placeholder="Password"
-                        className={classnames('form-control form-control-lg', {
-                            'is-invalid': errors.password
-                        })}
-                        name="password"
-                        onChange={this.handleInputChange}
-                        value={this.state.password}
-                        />
-                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            Login
-                        </button>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+  
+
+  render() {
+    return (
+      <div className="Login">
+        {this.state.isSignedIn ? (
+          <span>
+            <div>Signed In!</div>
+            <button class ="signout"  onClick={() => firebase.auth().signOut()}>Sign out!</button>
+            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+            <img
+              alt="profile"
+              src={firebase.auth().currentUser.photoURL}
+            />
+          </span>
+        ) : (
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        )}
+      </div>
+    )
+  }
 }
 
-Login.propTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
-}
-
-const mapStateToProps = (state) => ({
-    auth: state.auth,
-    errors: state.errors
-})
-
-export default connect(mapStateToProps, { loginUser })(Login);
+export default (Login);

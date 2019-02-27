@@ -6,37 +6,63 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../Redux-JS/actions/authentication';
 import { withRouter } from 'react-router-dom';
 
+
 // Main Navbar component. Not the best at directions
-
+var username =sessionStorage.getItem('usersignedin');
+var userphoto =sessionStorage.getItem('usersphoto');
+var isSignIn = sessionStorage.getItem('issignIN');
+console.log(isSignIn);
 class Navbar extends Component {
-
     onLogout(e) {
         e.preventDefault();
         this.props.logoutUser(this.props.history);
     }
 
+
+
     render() {
-        const {isAuthenticated, user} = this.props.auth;
-        const authLinks = (
-            <ul className="navbar-nav ml-auto">
-                <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
-                    <img src={user.avatar} alt={user.name} title={user.name}
-                        className="rounded-circle"
-                        style={{ width: '25px', marginRight: '5px' }} />
-                            Logout
-                </a>
-            </ul>
-        )
-        const guestLinks = (
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/register">Sign Up</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/login">Sign In</Link>
-                </li>
-            </ul>
-        )
+        let navigBar;
+        if(isSignIn === 'true'){
+            navigBar = <ul className="navbar-nav ml-auto">
+            <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
+                <img src={userphoto} alt={username} title={username}
+                    className="rounded-circle"
+                    style={{ width: '25px', marginRight: '5px' }} />
+                        Logout
+            </a>
+        </ul>
+        }
+        if(isSignIn === 'false') {
+            navigBar = <ul className="navbar-nav">
+            {/* <li className="nav-item">
+                <Link className="nav-link" to="/register">Sign Up</Link>
+            </li> */}
+            <li className="nav-item">
+                <Link className="nav-link" to="/login">Sign In</Link>
+            </li>
+        </ul>
+        }
+        // const authLinks = (
+        //     <ul className="navbar-nav ml-auto">
+        //         <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
+        //             <img src={userphoto} alt={username} title={username}
+        //                 className="rounded-circle"
+        //                 style={{ width: '25px', marginRight: '5px' }} />
+        //                     Logout
+        //         </a>
+        //     </ul>
+        // )
+
+        // const guestLinks = (
+        //     <ul className="navbar-nav">
+        //         {/* <li className="nav-item">
+        //             <Link className="nav-link" to="/register">Sign Up</Link>
+        //         </li> */}
+        //         <li className="nav-item">
+        //             <Link className="nav-link" to="/login">Sign In</Link>
+        //         </li>
+        //     </ul>
+        // )
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link className="navbar-brand" to="/">Navbar</Link>
@@ -44,12 +70,14 @@ class Navbar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    {isAuthenticated ? authLinks : guestLinks}
+                    {navigBar}
+
                 </div>
             </nav>
         )
     }
 }
+
 
 Navbar.propTypes = {
     logoutUser: PropTypes.func.isRequired,
