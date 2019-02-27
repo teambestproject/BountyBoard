@@ -1,10 +1,12 @@
 import React from "react";
 import "./style.css";
 
-// Main Footer Component, Belongs in Wrapper even if it can't spit fire.
-
-const Footer = () => (
-    <div className="footer">I'm a FOOTER! no not the fetish</div>
-);
+function Footer() {
+  return (
+    <footer className="footer">
+      <span>Best Project Ever 2019 -- Bounty Board</span>
+    </footer>
+  );
+}
 
 export default Footer;
