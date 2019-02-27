@@ -22,6 +22,8 @@ app.get("/", function(req, res) {
     res.send("Hello");
 })
 
+app.use('/api/users', users);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
