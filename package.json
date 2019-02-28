@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "dotenv": "^6.2.0",
     "firebase": "^4.12.1",
     "react": "^16.3.1",

@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
@@ -13,20 +14,20 @@ import Wrapper from "./Components/Wrapper";
 require('dotenv').config();
 
 const {
-	REACT_APP_FIREBASE_API_KEY,
-	REACT_APP_FIREBASE_AUTH_DOMAIN,
-	REACT_APP_FIREBASE_DATABASE_URL,
-	REACT_APP_FIREBASE_PROJECT_ID,
-	REACT_APP_FIREBASE_STORAGE_BUCKET,
-	REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+  REACT_APP_FIREBASE_API_KEY,
+  REACT_APP_FIREBASE_AUTH_DOMAIN,
+  REACT_APP_FIREBASE_DATABASE_URL,
+  REACT_APP_FIREBASE_PROJECT_ID,
+  REACT_APP_FIREBASE_STORAGE_BUCKET,
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 } = process.env;
 const firebaseConfig = {
-	apiKey: REACT_APP_FIREBASE_API_KEY,
-	authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
-	databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
-	projectId: REACT_APP_FIREBASE_PROJECT_ID,
-	storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
 
 
@@ -61,36 +62,28 @@ class App extends Component {
       <div className="App">
         {this.state.isSignedIn ? (
           <span>
-            <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img
-              alt="profile"
-              src={firebase.auth().currentUser.photoURL}
-            />
-
-<Router>
-      <div>
-        <Navbar />
-        <Wrapper>
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/welcome" component={Welcome} />
-          <Route exact path="/bounties" component={Bounties} />
-          <Route exact path="/updates" component={Updates} />
-          <Route exact path="/user" component={User} />
-        </Wrapper>
-        <Footer />
-      </div>
-    </Router>
+            <Router>
+              <div>
+                <Navbar />
+                <Wrapper>
+                  <Route exact path="/" component={Welcome} />
+                  <Route exact path="/welcome" component={Welcome} />
+                  <Route exact path="/bounties" component={Bounties} />
+                  <Route exact path="/updates" component={Updates} />
+                  <Route exact path="/user" component={User} />
+                </Wrapper>
+                <Footer />
+              </div>
+            </Router>
 
 
           </span>
         ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        )}
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          )}
       </div>
     )
   }

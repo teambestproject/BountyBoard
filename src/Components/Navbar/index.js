@@ -1,14 +1,19 @@
 import React from "react";
+import firebase from "firebase";
 import { Link } from "react-router-dom";
 import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Bounties
+    <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+      <Link className="navbar-brand" to="/user">
+      <img
+              alt="profile"
+              src={firebase.auth().currentUser.photoURL}
+            />
       </Link>
+      <span>Welcome {firebase.auth().currentUser.displayName}</span>
       <div>
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -19,7 +24,7 @@ function Navbar() {
                   ? "nav-link active"
                   : "nav-link"
                         } 
-            >Welcome</Link>
+            >Home</Link>
           </li>
           
           <li className="nav-item">
@@ -42,9 +47,9 @@ function Navbar() {
               className={window.location.pathname === "/user" ? "nav-link active" : "nav-link"}
             >User</Link>
           </li>
-
         </ul>
       </div>
+      <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
     </nav>
   );
 }
