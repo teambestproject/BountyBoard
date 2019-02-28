@@ -14,8 +14,8 @@ class Bounty extends Component {
         const { children } = this.props;
         const bountyTitle = findByType(children, BountyTitle);
 
-        if (!BountyTitle) {
-            return null;
+        if (!bountyTitle) {
+            return <div className="bountyTitle">No BountyTitle Provided!</div>;
         }
 
         return <div className="bountyTitle">BountyTitle Rendered!{bountyTitle.props.children}</div>;
@@ -26,7 +26,7 @@ class Bounty extends Component {
         const bountyInfo = findByType(children, BountyInfo);
 
         if (!bountyInfo) {
-            return null;
+            return <div className="bountyInfo">No BountyInfo Provided!</div>;
         }
 
         return <div className="bountyInfo">BountyInfo Rendered!{bountyInfo.props.children}</div>;
@@ -37,7 +37,7 @@ class Bounty extends Component {
         const bountyReward = findByType(children, BountyReward);
 
         if (!bountyReward) {
-            return null;
+            return <div className="bountyReward">No BountyReward Provided!</div>;
         }
 
         return <div className="bountyReward">BountyReward Rendered! {bountyReward.props.children}</div>

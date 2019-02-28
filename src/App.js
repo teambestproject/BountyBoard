@@ -1,9 +1,15 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Welcome from "./pages/Welcome";
+import Bounties from "./pages/Bounties";
+import Updates from "./pages/Updates";
+import User from "./pages/User";
 import "./App.css"
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-import Bounty from "./Components/Bounty"
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
+import Wrapper from "./Components/Wrapper";
 require('dotenv').config();
 
 const {
@@ -62,12 +68,22 @@ class App extends Component {
               alt="profile"
               src={firebase.auth().currentUser.photoURL}
             />
-          <Navbar></Navbar>
-          <Bounty>
-            <Bounty.BountyTitle></Bounty.BountyTitle>
-            <Bounty.BountyInfo></Bounty.BountyInfo>
-            <Bounty.BountyReward></Bounty.BountyReward>
-          </Bounty>
+
+<Router>
+      <div>
+        <Navbar />
+        <Wrapper>
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/welcome" component={Welcome} />
+          <Route exact path="/bounties" component={Bounties} />
+          <Route exact path="/updates" component={Updates} />
+          <Route exact path="/user" component={User} />
+        </Wrapper>
+        <Footer />
+      </div>
+    </Router>
+
+
           </span>
         ) : (
           <StyledFirebaseAuth
