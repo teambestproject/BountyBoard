@@ -1,91 +1,57 @@
-import React, { Component } from "react";
+import React from "react";
+import firebase from "firebase";
+import { Link } from "react-router-dom";
 import "./style.css";
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { logoutUser } from '../../Redux-JS/actions/authentication';
-import { withRouter } from 'react-router-dom';
 
-
-// Main Navbar component. Not the best at directions
-var username =sessionStorage.getItem('usersignedin');
-var userphoto =sessionStorage.getItem('usersphoto');
-var isSignIn = sessionStorage.getItem('issignIN');
-console.log(isSignIn);
-class Navbar extends Component {
-    onLogout(e) {
-        e.preventDefault();
-        this.props.logoutUser(this.props.history);
-    }
-
-
-
-    render() {
-        let navigBar;
-        if(isSignIn === 'true'){
-            navigBar = <ul className="navbar-nav ml-auto">
-            <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
-                <img src={userphoto} alt={username} title={username}
-                    className="rounded-circle"
-                    style={{ width: '25px', marginRight: '5px' }} />
-                        Logout
-            </a>
+// Depending on the current path, this component sets the "active" class on the appropriate navigation link item
+function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+      <Link className="navbar-brand" to="/user">
+      <img
+              alt="profile"
+              src={firebase.auth().currentUser.photoURL}
+            />
+      </Link>
+      <span>Welcome {firebase.auth().currentUser.displayName}</span>
+      <div>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link 
+              to="/"
+              className={
+                window.location.pathname === "/" || window.location.pathname === "/welcome"
+                  ? "nav-link active"
+                  : "nav-link"
+                        } 
+            >Home</Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link
+              to="/bounties"
+              className={window.location.pathname === "/bounties" ? "nav-link active" : "nav-link"}
+            >Bounties</Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link
+              to="/updates"
+              className={window.location.pathname === "/updates" ? "nav-link active" : "nav-link"}
+            >Updates</Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link
+              to="/user"
+              className={window.location.pathname === "/user" ? "nav-link active" : "nav-link"}
+            >User</Link>
+          </li>
         </ul>
-        }
-        if(isSignIn === 'false') {
-            navigBar = <ul className="navbar-nav">
-            {/* <li className="nav-item">
-                <Link className="nav-link" to="/register">Sign Up</Link>
-            </li> */}
-            <li className="nav-item">
-                <Link className="nav-link" to="/login">Sign In</Link>
-            </li>
-        </ul>
-        }
-        // const authLinks = (
-        //     <ul className="navbar-nav ml-auto">
-        //         <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
-        //             <img src={userphoto} alt={username} title={username}
-        //                 className="rounded-circle"
-        //                 style={{ width: '25px', marginRight: '5px' }} />
-        //                     Logout
-        //         </a>
-        //     </ul>
-        // )
-
-        // const guestLinks = (
-        //     <ul className="navbar-nav">
-        //         {/* <li className="nav-item">
-        //             <Link className="nav-link" to="/register">Sign Up</Link>
-        //         </li> */}
-        //         <li className="nav-item">
-        //             <Link className="nav-link" to="/login">Sign In</Link>
-        //         </li>
-        //     </ul>
-        // )
-        return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link className="navbar-brand" to="/">Navbar</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    {navigBar}
-
-                </div>
-            </nav>
-        )
-    }
+      </div>
+      <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+    </nav>
+  );
 }
 
-
-Navbar.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
-}
-
-const mapStateToProps = (state) => ({
-    auth: state.auth
-})
-
-export default connect(mapStateToProps, {logoutUser})(withRouter(Navbar));
+export default Navbar;
