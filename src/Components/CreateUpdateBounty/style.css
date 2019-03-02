@@ -1,0 +1,15 @@
+.titletext {
+    width: 80vh;
+    height:10vh;
+}
+.bountytext {
+    width: 80vh;
+    height:20vh;
+}
+.rewardtext {
+    width: 80vh;
+    height:10vh;
+}
+.bountylocation {
+float: left
+}

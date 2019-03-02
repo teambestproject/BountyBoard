@@ -10,7 +10,8 @@ class CreateUpdateBounty extends Component {
             bountyInfo: 'Please write the Bounty Info',
             bountyReward: 'Please write the Bounty Rewards',
             bountyLocation: 'Please enter the location of the bounty',
-            BountyDefaultReq: false
+            NeedsCar: false,
+            NeedsCoding: false
         }
     }
 
@@ -30,49 +31,76 @@ class CreateUpdateBounty extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Bounty Title
-              <input
+                <div className="form-group">
+                    <label for="bountyTitle">Bounty Title</label>
+                    <br />
+                    <textarea
+                        type="textarea"
                         name="bountyTitle"
+                        id="bountyTitle"
+                        class="titletext"
+                        placeholder="Bounty Title goes here"
                         onChange={this.handleChange}
                     />
-                </label>
+                </div>
                 <br />
-                <label>
-                    Bounty Info
-                    <input
+                <div className="form-group">
+                    <label for="bountyInfo">Bounty Info</label>
+                    <br />
+                    <textarea
+                        type="textarea"
                         name="bountyInfo"
+                        id="bountyInfo"
+                        className="bountytext"
+                        placeholder="Bounty Info goes here"
                         onChange={this.handleChange}
                     />
-                </label>
+                </div>
                 <br />
-                <label>
-                    Bounty Reward
-                    <input
+                <div className="form-group">
+                    <label for="bountyReward">Bounty Reward</label>
+                    <br />
+                    <textarea
+                        type="textarea"
                         name="bountyReward"
+                        id="bountyReward"
+                        className="rewardtext"
+                        placeholder="Bounty Reward goes here"
                         onChange={this.handleChange}
                     />
-                </label>
+                </div>
                 <br />
-                <label>Bounty Location
-                <select value={this.state.bountyLocation} onChange={this.handleInputChange}>
+                <div classname="form-group bountylocation">
+                <label>Bounty Location</label>
+                <br />
+                <select
+                    value={this.state.bountyLocation}
+                    onChange={this.handleInputChange}
+                    classname="locationselect">
                     <option value="Kitchen">Kitchen</option>
                     <option value="Meeting Room 1">Meeting Room 1</option>
                     <option value="Meeting Room 2">Meeting Room 2</option>
                     <option value="Server Room">Server Room</option>
                     <option value="Hallway">Hallway</option>
                 </select>
-                </label>
+                </div>
+
                 <br />
                 <div className="BountyReqsContainer">
-                    <label>
-                        BountyDefaultReq
-                        <input
-                            name="BountyDefaultReq"
-                            type="checkbox"
-                            checked={this.state.BountyDefaultReq}
-                            onChange={this.handleInputChange} />
-                    </label>
+                    <label>Needs Car</label>
+                    <input
+                        name="needsCar"
+                        type="checkbox"
+                        checked={this.state.NeedsCar}
+                        onChange={this.handleInputChange} />
+
+                    <label>Needs Coding</label>
+                    <input
+                        name="needsCoding"
+                        type="checkbox"
+                        checked={this.state.NeedsCoding}
+                        onChange={this.handleInputChange} />
+
                 </div>
                 <input type="submit" value="Submit" />
             </form>
