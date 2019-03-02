@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 require("dotenv").config();
 
-const users = require("./routes/user")
+const users = require("./routes/user");
+const bounty = require('./routes/bounty');
 
 mongoose.connect(process.env.MONGO_DB_LOCAL, { useNewUrlParser: true }).then(
     () => {console.log('Database is connected') },
@@ -23,6 +24,7 @@ app.get("/", function(req, res) {
 })
 
 app.use('/api/users', users);
+app.use('/api/bounties', bounty);
 
 const PORT = process.env.PORT || 5000;
 
