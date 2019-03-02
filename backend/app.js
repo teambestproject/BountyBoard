@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 require("dotenv").config();
 
-const users = require("./routes/user");
+// const users = require("./routes/user");
 const bounty = require('./routes/bounty');
 
 mongoose.connect(process.env.MONGO_DB_LOCAL, { useNewUrlParser: true }).then(
@@ -13,8 +13,8 @@ mongoose.connect(process.env.MONGO_DB_LOCAL, { useNewUrlParser: true }).then(
 );
 
 const app = express();
-app.use(passport.initialize());
-require('./passport')(passport);
+// app.use(passport.initialize());
+// require('./passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,8 +23,10 @@ app.get("/", function(req, res) {
     res.send("Hello");
 })
 
-app.use('/api/users', users);
-app.use('/api/bounties', bounty);
+// app.use('/api/users', users);
+app.use('/api/bounty', bounty);
+// app.use(app.router);
+// routes.initialize(app);
 
 const PORT = process.env.PORT || 5000;
 

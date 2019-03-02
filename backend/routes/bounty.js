@@ -55,3 +55,5 @@ router.get('/allBounty', function(req, res) {
             res.json(err);
         });
 });
+
+module.exports = router;
