@@ -6,9 +6,6 @@ import "./style.css";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Bounties
-      </Link>
       <div>
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -19,28 +16,28 @@ function Navbar() {
                   ? "nav-link active"
                   : "nav-link"
                         } 
-            >Welcome</Link>
+            ><h1 id="title">Bounty Bonus</h1></Link>
           </li>
           
           <li className="nav-item">
             <Link
               to="/bounties"
               className={window.location.pathname === "/bounties" ? "nav-link active" : "nav-link"}
-            >Bounties</Link>
+            >See Your Bounties</Link>
           </li>
           
           <li className="nav-item">
             <Link
               to="/updates"
               className={window.location.pathname === "/updates" ? "nav-link active" : "nav-link"}
-            >Updates</Link>
+            >Bounty Updates</Link>
           </li>
           
           <li className="nav-item">
             <Link
               to="/user"
               className={window.location.pathname === "/user" ? "nav-link active" : "nav-link"}
-            >User</Link>
+            >Your User Profile Info</Link>
           </li>
 
         </ul>

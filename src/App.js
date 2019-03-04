@@ -61,13 +61,10 @@ class App extends Component {
       <div className="App">
         {this.state.isSignedIn ? (
           <span>
-            <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img
-              alt="profile"
-              src={firebase.auth().currentUser.photoURL}
-            />
+            <div class="sign">
+              <h5>Signed in as {firebase.auth().currentUser.displayName}</h5>
+              <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+            </div>
 
 <Router>
       <div>

@@ -4,7 +4,7 @@ import React from "react";
 function User() {
     return (
       <div>
-        <h1> User Profile </h1>     
+        <h4> Your User Profile Info </h4>     
       </div>
     );
   }

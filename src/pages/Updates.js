@@ -3,7 +3,7 @@ import React from "react";
 function Updates() {
     return (
       <div>
-        <h1> Bounty Updates </h1>
+        <h4> Bounty Updates </h4>
       </div>
     );
   }
