@@ -24,4 +24,6 @@ const BountySchema = new Schema({
     claimedBy: {
         type: String
     }
-})
+});
+
+module.exports = BountySchema;

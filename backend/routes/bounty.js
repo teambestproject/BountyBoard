@@ -14,7 +14,7 @@ router.post('/bounty', function(req, res) {
     Bounty.findOne({
         title: req.body.title
     }).then(bounty => {
-        if(bounty){
+        if(bounty) {
             return res.status(400).json({
                 title: 'Bounty with this title exists'
             })
@@ -38,20 +38,20 @@ router.post('/bounty', function(req, res) {
 
 router.get('/bounty/:id', function(req, res) {
     Bounty.findOne({ _id: req.params.id })
-        .then(function(dbBounty){
+        .then(function(dbBounty) {
             res.json(dbBounty);
         })
-        .catch(function(err){
+        .catch(function(err) {
             res.json(err);
         });
 });
 
 router.get('/allBounty', function(req, res) {
     Bounty.findAll({})
-        .then(function(dbBounties){
+        .then(function(dbBounties) {
             res.json(dbBounties);
         })
-        .catch(function(err){
+        .catch(function(err) {
             res.json(err);
         });
 });

@@ -5,6 +5,6 @@ export const visabilityFilters = {
     SHOW_ALL : "SHOW_ALL",
     SHOW_COMPLETED : "SHOW_COMPLETED",
     SHOW_ACTIVE : "SHOW_ACTIVE"
-}
+};
 export const TOGGLE_BOUNTY = "TOGGLE_BOUNTY";
 export const CREATE_BOUNTY = "CREAtE_BOUNTY";

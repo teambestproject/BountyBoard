@@ -3,7 +3,7 @@ import { visabilityFilters, SET_BOUNTY_VISABILITY } from "../actions/types";
 const initialState = {
     visablityFilter: visabilityFilters.SHOW_ALL,
     bounties: []
-}
+};
 
 export default function(state = initialState, action) {
     switch(action.type) {
@@ -13,5 +13,5 @@ export default function(state = initialState, action) {
             });
         default:
             return state;
-    }
+    };
 }

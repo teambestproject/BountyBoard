@@ -15,7 +15,7 @@ module.exports = function validateBountyInput(data) {
         errors.title = 'Title field is required';
     }
 
-    if(!Validator.isLength(data.description, {min: 30, max: 1000})){
+    if(!Validator.isLength(data.description, {min: 30, max: 1000})) {
         errors.description = 'Description must be between 30 and 1000 characters';
     }
 
@@ -23,11 +23,11 @@ module.exports = function validateBountyInput(data) {
         errors.description = 'Description field is required';
     }
 
-    if(!Validator.isLength(data.reward, {min: 30, max: 1000})){
+    if(!Validator.isLength(data.reward, {min: 30, max: 1000})) {
         errors.reward = 'Reward must be between 30 and 1000 characters';
     }
 
-    if(Validator.isEmpty(data.reward)){
+    if(Validator.isEmpty(data.reward)) {
         errors.reward = 'Reward field is required.'
     }
 
@@ -35,4 +35,4 @@ module.exports = function validateBountyInput(data) {
         errors,
         isValid: isEmpty(errors)
     }
-}
+};
