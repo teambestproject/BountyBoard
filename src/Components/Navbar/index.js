@@ -23,7 +23,7 @@ function Navbar() {
             <Link
               to="/bounties"
               className={window.location.pathname === "/bounties" ? "nav-link active" : "nav-link"}
-            >See Your Bounties</Link>
+            >Your Bounties</Link>
           </li>
           
           <li className="nav-item">
@@ -37,7 +37,7 @@ function Navbar() {
             <Link
               to="/user"
               className={window.location.pathname === "/user" ? "nav-link active" : "nav-link"}
-            >Your User Profile Info</Link>
+            >User Profile Info</Link>
           </li>
 
         </ul>
