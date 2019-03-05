@@ -24,12 +24,12 @@ router.post('/bounty', function(req, res) {
                 description: req.body.description,
                 reward: req.body.reward
                 //createdBy: req.user.id (Needs to be optimized with firebase)
-            }
+            };
             Bounty.create(newBounty)
                 .then(function(dbBounty) {
                     res.json(dbBounty);
                 })
-                .catch(function(err){
+                .catch(function(err) {
                     res.json(err);
                 });
         }
@@ -38,20 +38,20 @@ router.post('/bounty', function(req, res) {
 
 router.get('/bounty/:id', function(req, res) {
     Bounty.findOne({ _id: req.params.id })
-        .then(function(dbBounty){
+        .then(function(dbBounty) {
             res.json(dbBounty);
         })
-        .catch(function(err){
+        .catch(function(err) {
             res.json(err);
         });
 });
 
 router.get('/allBounty', function(req, res) {
     Bounty.findAll({})
-        .then(function(dbBounties){
+        .then(function(dbBounties) {
             res.json(dbBounties);
         })
-        .catch(function(err){
+        .catch(function(err) {
             res.json(err);
         });
 });

@@ -13,9 +13,9 @@ export const createBounty = (bounty, history) => dispatch => {
 }
 
 export const toggleBounty = index => {
-    return { type: TOGGLE_BOUNTY, index }
+    return { type: TOGGLE_BOUNTY, index };
 }
 
 export const setVisabilityFilter = filter => {
-    return{ type: SET_BOUNTY_VISABILITY, filter }
+    return { type: SET_BOUNTY_VISABILITY, filter };
 }
