@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const passport = require("passport");
 require("dotenv").config();
 
 const bounty = require('./routes/bounty');

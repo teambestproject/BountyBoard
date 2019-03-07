@@ -70,15 +70,6 @@ class Login extends Component {
       <div className="Login">
         {this.state.isSignedIn ? (
           <span>
-<<<<<<< HEAD:frontend/src/Components/Login/index.js
-            <div>Signed In!</div>
-            <button class ="signout"  onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img
-              alt="profile"
-              src={firebase.auth().currentUser.photoURL}
-            />
-=======
             <div class="sign">
               <h5>Signed in as: {firebase.auth().currentUser.displayName}</h5>
               <h5><button onClick={() => firebase.auth().signOut()}>Sign out!</button></h5>
@@ -99,7 +90,6 @@ class Login extends Component {
     </Router>
 
 
->>>>>>> 8ac37be9a200893647ef0eccc43e4bcb2abc149a:src/App.js
           </span>
         ) : (
           <StyledFirebaseAuth
