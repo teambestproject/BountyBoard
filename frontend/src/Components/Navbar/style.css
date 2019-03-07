@@ -2,12 +2,6 @@ nav.navbar.navbar-default {
     margin-bottom: 0;
   }
 
-<<<<<<< HEAD:frontend/src/Components/Navbar/style.css
-  img {
-    width: 5vh;
-    height: auto;
-  }
-=======
 body {
   background-image: url("../images/Paint.png");
 }
@@ -36,4 +30,3 @@ body {
   border-width: 7px;
   padding: 50px;
 }
->>>>>>> 8ac37be9a200893647ef0eccc43e4bcb2abc149a:src/Components/Navbar/style.css
