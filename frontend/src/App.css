@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.sign {
+  font-size: 30px;
+  text-align: left;
+  padding-left: 15px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -15,11 +21,11 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 40px;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 40px;
 }
 
 @keyframes App-logo-spin {
