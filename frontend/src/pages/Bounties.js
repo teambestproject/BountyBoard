@@ -3,7 +3,7 @@ import React from "react";
 function Bounties() {
     return (
       <div>
-        <h1> Bounties </h1>     
+        <h4> See Posted Bounties </h4>     
       </div>
     );
   }

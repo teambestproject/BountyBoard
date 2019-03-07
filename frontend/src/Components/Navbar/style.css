@@ -2,7 +2,38 @@ nav.navbar.navbar-default {
     margin-bottom: 0;
   }
 
+<<<<<<< HEAD:frontend/src/Components/Navbar/style.css
   img {
     width: 5vh;
     height: auto;
   }
+=======
+body {
+  background-image: url("../images/Paint.png");
+}
+
+.title {
+  color: teal;
+  font-size: 54px;
+}
+
+.nav-link {
+  color: rgba(14, 115, 128, 0.856);
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: rgba(10, 47, 151, 0.712);
+  font-size: 30px;}
+
+.welcome {
+  text-align: left;
+  font-size: 28px;
+  margin: 25px;
+  border-style: groove;
+  border-color: rgba(0, 128, 128, 0.623);
+  border-width: 7px;
+  padding: 50px;
+}
+>>>>>>> 8ac37be9a200893647ef0eccc43e4bcb2abc149a:src/Components/Navbar/style.css
