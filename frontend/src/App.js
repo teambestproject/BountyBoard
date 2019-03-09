@@ -5,6 +5,7 @@ import Welcome from "./pages/Welcome";
 import Bounties from "./pages/Bounties";
 import Updates from "./pages/Updates";
 import User from "./pages/User";
+import Create from "./pages/Create";
 import "./App.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -71,6 +72,7 @@ class App extends Component {
                   <Route exact path="/bounties" component={Bounties} />
                   <Route exact path="/updates" component={Updates} />
                   <Route exact path="/user" component={User} />
+                  <Route exact path="/create" component={Create} />
                 </Wrapper>
                 <Footer />
               </div>
