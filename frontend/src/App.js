@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './Redux-JS/store';
 import Welcome from "./pages/Welcome";
 import Bounties from "./pages/Bounties";
 import Updates from "./pages/Updates";
@@ -60,6 +62,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
       <div className="App">
         {this.state.isSignedIn ? (
           <span>
@@ -87,6 +90,7 @@ class App extends Component {
             />
           )}
       </div>
+      </Provider>
     )
   }
 }

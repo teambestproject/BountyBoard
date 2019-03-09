@@ -42,7 +42,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+      <button className="btn btn-outline-secondary ml-auto" style={{marginRight: "5px"}} onClick={() => firebase.auth().signOut()}>Sign out!</button>
     </nav>
   );
 }

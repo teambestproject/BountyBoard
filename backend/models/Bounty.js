@@ -26,4 +26,6 @@ const BountySchema = new Schema({
     }
 });
 
-module.exports = BountySchema;
+const Bounty = mongoose.model('bounty', BountySchema);
+
+module.exports = Bounty;
