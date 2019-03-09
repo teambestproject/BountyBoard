@@ -1,3 +1,12 @@
+.navbar {
+  background-color: transparent;
+  left: auto;
+  right: auto;
+  text-align: center;
+  padding-left: 41%;
+  padding-top: 5%;
+}
+
 nav.navbar.navbar-default {
     margin-bottom: 0;
   }
@@ -21,12 +30,4 @@ body {
   color: rgba(10, 47, 151, 0.712);
   font-size: 30px;}
 
-.welcome {
-  text-align: left;
-  font-size: 28px;
-  margin: 25px;
-  border-style: groove;
-  border-color: rgba(0, 128, 128, 0.623);
-  border-width: 7px;
-  padding: 50px;
-}
+
