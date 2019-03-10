@@ -4,7 +4,7 @@ const validateBountyInput = require('../validation/bounty');
 
 const Bounty = require('../models/Bounty');
 
-router.post('/bounty', function(req, res) {
+router.post('/create', function(req, res) {
     const { errors, isValid } = validateBountyInput(req.body);
 
     if(!isValid) {
