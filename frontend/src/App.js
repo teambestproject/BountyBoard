@@ -5,12 +5,12 @@ import { Provider } from 'react-redux';
 import store from './Redux-JS/store';
 import Welcome from "./pages/Welcome";
 import Bounties from "./pages/Bounties";
-import Updates from "./pages/Updates";
 import User from "./pages/User";
 import Create from "./pages/Create";
 import "./App.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
@@ -69,12 +69,12 @@ class App extends Component {
           <span>
             <Router>
               <div>
+                <Sign />
                 <Navbar />
                 <Wrapper>
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/welcome" component={Welcome} />
                   <Route exact path="/bounties" component={Bounties} />
-                  <Route exact path="/updates" component={Updates} />
                   <Route exact path="/user" component={User} />
                   <Route exact path="/create" component={Create} />
                 </Wrapper>
