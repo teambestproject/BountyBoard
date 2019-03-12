@@ -12,6 +12,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
+import Dropdown from "./Components/Dropdown";
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
 import LoginPage from './Components/LoginPage';
@@ -71,6 +72,7 @@ class App extends Component {
               <div>
                 <Sign />
                 <Navbar />
+                <Dropdown />
                 <Wrapper>
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/welcome" component={Welcome} />
