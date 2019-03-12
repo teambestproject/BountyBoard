@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './Redux-JS/store';
 import Welcome from "./pages/Welcome";
 import Bounties from "./pages/Bounties";
 import User from "./pages/User";
@@ -12,6 +14,7 @@ import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
+import LoginPage from './Components/LoginPage';
 require('dotenv').config();
 
 const {
@@ -60,6 +63,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
       <div className="App">
         {this.state.isSignedIn ? (
           <span>
@@ -81,12 +85,16 @@ class App extends Component {
 
           </span>
         ) : (
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
+            <span>
+              <LoginPage />
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </span>
           )}
       </div>
+      </Provider>
     )
   }
 }

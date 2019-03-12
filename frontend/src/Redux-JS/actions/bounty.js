@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_ERRORS, SET_BOUNTY_VISABILITY, TOGGLE_BOUNTY } from './types';
 
 export const createBounty = (bounty, history) => dispatch => {
-    axios.post('/api/bounties/bounty', bounty)
+    axios.post('/api/bounty/create', bounty)
         .then(res => history.push('/allBounty'))
         .catch(err => {
             dispatch({

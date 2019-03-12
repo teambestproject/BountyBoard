@@ -5,16 +5,17 @@
 
   h2 {
     font-size: 150px;
-    color: rgba(0, 255, 0, 0.753);
+    color: rgba(62, 223, 110, 0.712);
     padding-top: 5%;
     text-decoration: bold;
     text-shadow:
-    -1px -1px 0  rgba(255, 102, 0, 0.753),
-    1px -1px 0  rgba(255, 102, 0, 0.753),
+    -1px -1px 0  rgba(62, 223, 110, 0.712),
+    1px -1px 0  rgba(62, 223, 110, 0.712),
     -1px 1px 0 rgba(255, 102, 0, 0.753),
     1px 1px 0  rgba(255, 102, 0, 0.753)
   }
 
   .about {
-    font-size: 26px;
+    font-size: 27px;
+    padding: 3%;
   }
