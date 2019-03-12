@@ -14,6 +14,12 @@ export const createBounty = (bounty, history) => dispatch => {
 
 export const getAllBounties = () => {
     axios.get('/api/bounty/allBounty')
+        .then( res => {
+            return {
+                type: GET_BOUNTIES,
+                payload: res.response.data
+            }
+        })
 }
 
 export const toggleBounty = index => {
