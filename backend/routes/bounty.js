@@ -22,8 +22,8 @@ router.post('/create', function(req, res) {
             const newBounty = {
                 title: req.body.title,
                 description: req.body.description,
-                reward: req.body.reward
-                //createdBy: req.user.id (Needs to be optimized with firebase)
+                reward: req.body.reward,
+                createdBy: req.user.createdBy
             };
             Bounty.create(newBounty)
                 .then(function(dbBounty) {
