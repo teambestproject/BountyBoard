@@ -11,4 +11,4 @@ function Welcome() {
     );
   }
 
-export default WelcomePage;
+export default Welcome;
