@@ -14,6 +14,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
+import LoginPage from './Components/LoginPage';
 require('dotenv').config();
 
 const {
@@ -84,10 +85,13 @@ class App extends Component {
 
           </span>
         ) : (
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
+            <span>
+              <LoginPage />
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </span>
           )}
       </div>
       </Provider>
