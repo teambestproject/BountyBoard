@@ -1,0 +1,33 @@
+.navbar {
+  background-color: transparent;
+  left: auto;
+  right: auto;
+  text-align: center;
+  padding-left: 41%;
+  padding-top: 5%;
+}
+
+nav.navbar.navbar-default {
+    margin-bottom: 0;
+  }
+
+body {
+  background-image: url("../images/Paint.png");
+}
+
+.title {
+  color: teal;
+  font-size: 64px;
+}
+
+.nav-link {
+  color: rgba(14, 115, 128, 0.856);
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: rgba(10, 47, 151, 0.712);
+  font-size: 30px;}
+
+
