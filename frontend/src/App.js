@@ -9,7 +9,8 @@ import Bounties from "./pages/Bounties";
 import User from "./pages/User";
 import Create from "./pages/Create";
 import "./App.css";
-import firebase from "firebase";
+import firebase, { initializeApp } from "firebase";
+import { firebaseConfig } from './Components/Firebase/config'
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
@@ -17,6 +18,8 @@ import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
 import LoginPage from './Components/LoginPage';
 require('dotenv').config();
+
+const firebaseApp = initializeApp(firebaseConfig);
 
 class App extends Component {
   state = { 
@@ -36,7 +39,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+    this.unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
     })
   }
@@ -53,12 +56,8 @@ class App extends Component {
           <span>
             <Router>
               <div>
-<<<<<<< HEAD
-                <Navbar currentuser={firebase.auth().currentUser} />
-=======
                 <Sign />
-                <Navbar />
->>>>>>> devenv
+                <Navbar currentuser={firebaseApp.auth().currentUser} />
                 <Wrapper>
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/welcome" component={Welcome} />
@@ -77,7 +76,7 @@ class App extends Component {
               <LoginPage />
               <StyledFirebaseAuth
                 uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
+                firebaseAuth={firebaseApp.auth()}
               />
             </span>
           )}
@@ -85,6 +84,9 @@ class App extends Component {
       </Provider>
     )
   }
+}
+export {
+  firebaseApp
 }
 
 export default App;

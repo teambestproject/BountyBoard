@@ -8,11 +8,12 @@ import './style.css';
 class BountyBox extends Component {
     constructor() {
         super()
-        this.state = {
-            bounty: {}
-        }
+        this.state = {}
     }
-
+    componentDidMount() {
+        const bounties = this.props.getAllBounties();
+        this.setState({ bounty: bounties });
+    }
     componentWillReceiveProps(nextProps) {
         if (nextProps.bounty) {
             this.setState({ bounty: nextProps.bounty })
@@ -22,17 +23,25 @@ class BountyBox extends Component {
     render() {
         const { bounty } = this.state;
         return (
-            <ul className='bounty-group'>
-                <div>
-                    {JSON.stringify(bounty)}
+            <div className="container">
+                <div className="row">
+                    {console.log(bounty)}
+                    {bounty ? bounty.map((bounty) => (
+                        <Bounty
+                            key={bounty._id}
+                            title={bounty.title}
+                            description={bounty.description}
+                            reward={bounty.reward}
+                        />
+                    )) : <div></div>}
                 </div>
-            </ul>
+            </div>
         )
     }
 }
 
 BountyBox.propTypes = {
-    bounty: PropTypes.object.isRequired
+    bounty: PropTypes.any.isRequired
 }
 
 const mapStateToProps = (state) => ({

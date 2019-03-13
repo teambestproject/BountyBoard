@@ -1,16 +1,9 @@
-import { visabilityFilters, SET_BOUNTY_VISABILITY, GET_BOUNTIES } from "../actions/types";
+import { GET_BOUNTIES } from "../actions/types";
 
-const initialState = {
-    visablityFilter: visabilityFilters.SHOW_ALL,
-    bounties: []
-};
+const initialState = {};
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case SET_BOUNTY_VISABILITY:
-            return Object.assign({}, state, {
-                visabilityFilter: action.filter
-            });
         case GET_BOUNTIES:
             return action.payload
         default:

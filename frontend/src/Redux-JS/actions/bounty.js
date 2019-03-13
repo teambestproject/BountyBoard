@@ -12,20 +12,12 @@ export const createBounty = (bounty, history) => dispatch => {
         });
 }
 
-export const getAllBounties = () => {
+export const getAllBounties = () => dispatch => {
     axios.get('/api/bounty/allBounty')
         .then( res => {
-            return {
+            dispatch ({
                 type: GET_BOUNTIES,
-                payload: res.response.data
-            }
+                payload: res.data
+            });
         })
-}
-
-export const toggleBounty = index => {
-    return { type: TOGGLE_BOUNTY, index };
-}
-
-export const setVisabilityFilter = filter => {
-    return { type: SET_BOUNTY_VISABILITY, filter };
 }
