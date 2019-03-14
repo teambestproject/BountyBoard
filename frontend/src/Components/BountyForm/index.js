@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import * as firebase from 'firebase';
 import { createBounty } from '../../Redux-JS/actions/bounty';
 import './style.css';
+import { firebaseApp } from "./../../App";
 
 class BountyForm extends Component {
     constructor() {
@@ -32,7 +32,7 @@ class BountyForm extends Component {
             title: this.state.title,
             description: this.state.description,
             reward: this.state.reward,
-            createdBy: firebase.auth().currentUser.uid
+            createdBy: firebaseApp.auth().currentUser.uid
         }
         this.props.createBounty(bounty, this.props.history)
     }
