@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './Redux-JS/store';
-
 import Welcome from "./pages/Welcome";
 import Bounties from "./pages/Bounties";
 import User from "./pages/User";
@@ -12,10 +11,7 @@ import "./App.css";
 import firebase, { initializeApp } from "firebase";
 import { firebaseConfig } from './Components/Firebase/config'
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
-import Dropdown from "./Components/Dropdown";
-
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
 import LoginPage from './Components/LoginPage';
@@ -58,11 +54,7 @@ class App extends Component {
           <span>
             <Router>
               <div>
-                <Sign />
-
                 <Navbar currentuser={firebaseApp.auth().currentUser} />
-                <Dropdown />
-
                 <Wrapper>
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/welcome" component={Welcome} />
