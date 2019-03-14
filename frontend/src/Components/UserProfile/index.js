@@ -5,6 +5,7 @@ import "./style.css";
 
 const UserProfile = () => (
     <div className="userprofile">
+
         <div className="column">
         <h3> My Info </h3>
         <br />
@@ -15,6 +16,7 @@ const UserProfile = () => (
             </ul>            
         </div>
         <br />
+
         <div className="column">
         <h3> Projects </h3>
         <br />
@@ -25,6 +27,7 @@ const UserProfile = () => (
             </ul>
         </div>
         <br />
+
         <div className="column">
         <h3> Rewards </h3>
         <br />
