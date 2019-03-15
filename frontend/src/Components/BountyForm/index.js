@@ -95,7 +95,7 @@ class BountyForm extends Component {
                     <div className='form-group'>
                         <button type='submit' className='btn btn-primary'>
                             Submit Bounty
-                    </button>
+                        </button>
                     </div>
                 </form>
             </div>
