@@ -14,7 +14,7 @@ const BountySchema = new Schema({
         type: String,
         required: true
     },
-    status: {
+    isComplete: {
         type: Boolean,
         default: false
     },
@@ -23,7 +23,8 @@ const BountySchema = new Schema({
         required: true
     },
     claimedBy: {
-        type: String
+        type: String,
+        default: null
     }
 });
 

@@ -7,4 +7,5 @@ export const visabilityFilters = {
 };
 export const TOGGLE_BOUNTY = "TOGGLE_BOUNTY";
 export const CREATE_BOUNTY = "CREATE_BOUNTY";
+export const GET_BOUNTY = "GET_BOUNTY";
 export const GET_BOUNTIES = "GET_BOUNTIES";
