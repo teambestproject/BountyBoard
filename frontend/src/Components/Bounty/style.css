@@ -9,3 +9,15 @@ a:hover {
     padding:0;
     cursor: pointer;
 }
+
+.bountyouter {
+    background-image: url("../images/scroll.png");
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+}
+
+.card-body {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
