@@ -1,29 +1,59 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {firebaseApp} from '../../App';
 import "./style.css";
 
-// Depending on the current path, this component sets the "active" class on the appropriate navigation link item
+class Navbar extends React.Component {
+  constructor() {
+      super();
 
-function Navbar() {
-  return (
-    <nav className="navbar">
+      this.state = {
+          displayMenu: false,
+      };
 
-        <div>
-          <ul className="navbar-nav">
-           <li className="nav-item">
-            <Link 
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/welcome"
-                  ? "nav-link active"
-                  : "nav-link"
-                        } 
-            ><h1 id="title">Bounty Bonus</h1></Link>
-            </li>
-          </ul>
-      </div>
- </nav>
-  );
+      this.showDropdownMenu = this.showDropdownMenu.bind(this);
+      this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+  };
+
+  showDropdownMenu(event) {
+      event.preventDefault();
+      this.setState({ displayMenu: true }, () => {
+          document.addEventListener('click', this.hideDropdownMenu);
+      });
+  }
+
+  hideDropdownMenu() {
+      this.setState({ displayMenu: false }, () => {
+          document.removeEventListener('click', this.hideDropdownMenu);
+      });
+  }
+
+  render() {
+      return (
+          <div className="navwrap">
+              <div className="dropdown">
+                  <div className="ddlist btn btn-outline-light" onClick={this.showDropdownMenu}>☰</div>
+                  {this.state.displayMenu ? (
+                      <ul className="pages">
+                          <li><a href="/bounties">Open Bounties</a></li>
+                          <li><a href="/user">User Profile</a></li>
+                          <li><a href="/create">Create Bounty</a></li>
+                          <li><a href="/mybounties">My Bounties</a></li>
+                          <li><a href="/welcome">Home</a></li>
+                      </ul>
+                  ) :
+                      (null)
+                  }
+              </div>
+
+              <h1 id="title">Bounty Bonus</h1>
+
+              <nav className="signout">
+                  <button className="btn btn-outline-light" onClick={() => firebaseApp.auth().signOut()}>Signout</button>
+              </nav>
+          </div>
+      );
+
+  }
 }
 
 export default Navbar;
