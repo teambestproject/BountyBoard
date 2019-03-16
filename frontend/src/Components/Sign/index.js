@@ -1,12 +1,14 @@
 import React from "react";
-import firebase from "firebase";
+
+import {firebaseApp} from '../../App';
 import "./style.css";
 
 function Sign () {
     return (
       <nav className="signout">
         <div className="sign">
-          <button onClick={() => firebase.auth().signOut()}>--Sign out--</button>
+          <button className="btn btn-outline-light" onClick={() => firebaseApp.auth().signOut()}>Sign out</button>
+
         </div>
       </nav>
     );

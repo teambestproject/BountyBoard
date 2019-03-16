@@ -8,41 +8,21 @@ import Bounties from "./pages/Bounties";
 import User from "./pages/User";
 import Create from "./pages/Create";
 import "./App.css";
-import firebase from "firebase";
+import firebase, { initializeApp } from "firebase";
+import { firebaseConfig } from './Components/Firebase/config'
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import Sign from "./Components/Sign";
 import Navbar from "./Components/Navbar";
-import Dropdown from "./Components/Dropdown";
 import Footer from "./Components/Footer";
 import Wrapper from "./Components/Wrapper";
 import LoginPage from './Components/LoginPage';
 require('dotenv').config();
 
-const {
-  REACT_APP_FIREBASE_API_KEY,
-  REACT_APP_FIREBASE_AUTH_DOMAIN,
-  REACT_APP_FIREBASE_DATABASE_URL,
-  REACT_APP_FIREBASE_PROJECT_ID,
-  REACT_APP_FIREBASE_STORAGE_BUCKET,
-  REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-} = process.env;
-const firebaseConfig = {
-  apiKey: REACT_APP_FIREBASE_API_KEY,
-  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-};
-
-
-
-// console.log(firebaseConfig);
-
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
 class App extends Component {
-  state = { isSignedIn: false }
+  state = { 
+    isSignedIn: false, 
+  }
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -57,9 +37,13 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
+    this.unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
     })
+  }
+
+  componentWillUnmount() {
+    this.unregisterAuthObserver();
   }
 
   render() {
@@ -70,9 +54,7 @@ class App extends Component {
           <span>
             <Router>
               <div>
-                <Sign />
-                <Navbar />
-                <Dropdown />
+                <Navbar currentuser={firebaseApp.auth().currentUser} />
                 <Wrapper>
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/welcome" component={Welcome} />
@@ -91,7 +73,7 @@ class App extends Component {
               <LoginPage />
               <StyledFirebaseAuth
                 uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
+                firebaseAuth={firebaseApp.auth()}
               />
             </span>
           )}
@@ -100,5 +82,8 @@ class App extends Component {
     )
   }
 }
+export {
+  firebaseApp
+}
 
-export default App
+export default App;

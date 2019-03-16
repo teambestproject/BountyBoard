@@ -19,7 +19,8 @@ const BountySchema = new Schema({
         default: false
     },
     createdBy: {
-        type: String
+        type: String,
+        required: true
     },
     claimedBy: {
         type: String

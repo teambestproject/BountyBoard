@@ -22,8 +22,8 @@ router.post('/create', function(req, res) {
             const newBounty = {
                 title: req.body.title,
                 description: req.body.description,
-                reward: req.body.reward
-                //createdBy: req.user.id (Needs to be optimized with firebase)
+                reward: req.body.reward,
+                createdBy: req.body.createdBy
             };
             Bounty.create(newBounty)
                 .then(function(dbBounty) {
@@ -47,12 +47,12 @@ router.get('/bounty/:id', function(req, res) {
 });
 
 router.get('/allBounty', function(req, res) {
-    Bounty.findAll({})
+    Bounty.find({})
         .then(function(dbBounties) {
-            res.json(dbBounties);
+            return res.json(dbBounties);
         })
         .catch(function(err) {
-            res.json(err);
+            return res.json(err);
         });
 });
 
