@@ -13,15 +13,21 @@ class BountyBox extends Component {
             toggled: 'All'
         }
         this.handleToggleChange = this.handleToggleChange.bind(this);
+        this.handleRefresh = this.handleRefresh.bind(this);
     }
     handleToggleChange(e) {
+        e.preventDefault();
         this.setState({ toggled: e.target.name })
+        this.switchFunc(e.target.name)
+    }
+
+    switchFunc(target) {
         const user = {
             uid: firebaseApp.auth().currentUser.uid
         }
-        switch (e.target.name) {
+        switch (target) {
             case 'All':
-                this.setState({ bounty: this.props.getAllBounties() })
+                this.setState({ bounty: this.props.getAllBounties() });
                 break;
             case 'Posted': 
                 this.setState({ bounty: this.props.getMyPostedBounties(user) })
@@ -33,6 +39,7 @@ class BountyBox extends Component {
                 this.setState({ bounty: this.props.getAllBounties() })
                 break;
         }
+        
     }
 
     componentDidMount() {
@@ -44,6 +51,12 @@ class BountyBox extends Component {
         if (nextProps.bounty) {
             this.setState({ bounty: nextProps.bounty })
         }
+    }
+
+    handleRefresh(){
+        setTimeout(() => {
+            this.switchFunc(this.state.toggled)
+        }, 100)
     }
 
     render() {
@@ -64,13 +77,24 @@ class BountyBox extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    {console.log(firebaseApp.auth().currentUser.uid)}
+                    {/* {console.log(firebaseApp.auth().currentUser.uid)} */}
                     {bounty ? bounty.map((bounty) => (
                         <Bounty
-                            key={bounty._id}
-                            title={bounty.title}
-                            description={bounty.description}
-                            reward={bounty.reward}
+                        key={bounty._id}
+                        id={bounty._id}
+                        title={bounty.title}
+                        description={bounty.description}
+                        reward={bounty.reward}
+                        myBounty={{
+                            _id: bounty._id,
+                            isComplete: bounty.isComplete,
+                            claimedBy: bounty.claimedBy,
+                            title: bounty.title,
+                            description: bounty.description,
+                            reward: bounty.reward,
+                            createdby: bounty.createdby
+                        }}
+                        action={this.handleRefresh}
                         />
                     )) : <div></div>}
                 </div>

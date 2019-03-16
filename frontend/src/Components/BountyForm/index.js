@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { createBounty } from '../../Redux-JS/actions/bounty';
 import './style.css';
-import { firebaseApp } from "./../../App";
+import { firebaseApp } from './../../App';
 
 class BountyForm extends Component {
     constructor() {

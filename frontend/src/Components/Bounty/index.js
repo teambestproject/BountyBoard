@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SmartButton from '../SmartButton';
 import "./style.css";
 
 const MAX_CHAR = 100;
@@ -8,16 +9,18 @@ const shadowStyle = {
 }
 
 class Bounty extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       descriptionIsOpen: false,
-      rewardIsOpen: false
+      rewardIsOpen: false,
+      myBounty: this.props.myBounty,
+      action: this.props.action
     }
   }
 
   toggleDesc = () => {
-      this.setState({ descriptionIsOpen: !this.state.descriptionIsOpen })
+    this.setState({ descriptionIsOpen: !this.state.descriptionIsOpen })
   }
 
   toggleRew = () => {
@@ -38,13 +41,22 @@ class Bounty extends Component {
     return string.slice(0, MAX_CHAR) + '...';
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isComplete) {
+      this.setState({ isComplete: nextProps.isComplete })
+    }
+    if (nextProps.claimedBy) {
+      this.setState({ claimedBy: nextProps.claimedBy })
+    }
+  }
+
   render() {
     return (
       <div className="card bountyouter my-2 col-md-4" style={{ width: "500px" }}>
         <div className="card-body">
           <h5 className="card-title bounty-title">{this.props.title}</h5>
           <strong>Description:</strong>
-          <p className="card-text bounty-description" style={this.state.descriptionIsOpen ? null: shadowStyle}>{this.getRenderedDesc(this.props.description)}</p>
+          <p className="card-text bounty-description" style={this.state.descriptionIsOpen ? null : shadowStyle}>{this.getRenderedDesc(this.props.description)}</p>
           <p><button className="astext" onClick={this.toggleDesc}>
             {this.state.descriptionIsOpen ? 'Show less' : 'Show more'}
           </button></p>
@@ -53,7 +65,7 @@ class Bounty extends Component {
           <p><button className="astext" onClick={this.toggleRew}>
             {this.state.rewardIsOpen ? 'Show less' : 'Show more'}
           </button></p>
-          <button className="btn btn-primary">Complete this bounty! Once there's a function for it!</button>
+          <SmartButton id={this.state.id} myBounty={this.state.myBounty} action={this.state.action}/>
         </div>
       </div>
     );
