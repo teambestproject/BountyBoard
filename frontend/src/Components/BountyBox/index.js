@@ -39,7 +39,6 @@ class BountyBox extends Component {
                 this.setState({ bounty: this.props.getAllBounties() })
                 break;
         }
-        
     }
 
     componentDidMount() {
