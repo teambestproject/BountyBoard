@@ -4,7 +4,7 @@ import BountyForm from "../Components/BountyForm";
 function Create() {
     return (
         <div>
-            <BountyForm />}
+            <BountyForm />
         </div>
     );
 }
