@@ -52,7 +52,7 @@ class Bounty extends Component {
 
   render() {
     return (
-      <div className="card bountyouter my-2 col-md-4" style={{ width: "500px" }}>
+      <div className="card bountyouter my-2 col-md-4">
         <div className="card-body">
           <h5 className="card-title bounty-title">{this.props.title}</h5>
           <strong>Description:</strong>

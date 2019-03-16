@@ -61,8 +61,8 @@ class BountyBox extends Component {
     render() {
         const { bounty } = this.state;
         return (
-            <div className="container">
-                <div className="row">
+            <div className="container bountycontainer">
+                <div className="row buttonrow">
                     <div className="btn-group btn-group-toggle" data-toggle="buttons">
                         <label className={this.state.toggled === 'All' ? "btn btn-secondary active" : "btn btn-secondary"}>
                             <input type="radio" name="All" onClick={this.handleToggleChange} /> All
@@ -75,7 +75,7 @@ class BountyBox extends Component {
                         </label>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row bountyrow">
                     {/* {console.log(firebaseApp.auth().currentUser.uid)} */}
                     {bounty ? bounty.map((bounty) => (
                         <Bounty
