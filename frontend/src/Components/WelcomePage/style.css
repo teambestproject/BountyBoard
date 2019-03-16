@@ -1,7 +1,8 @@
 .welcomeTitle {
     background-image: url("../images/meeting.png");
-    height: 50vh;
-  }
+    background-size: 100vh 100vw;
+    height: 30vh;
+    }
 
   h2 {
     width: 100%;
