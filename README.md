@@ -44,7 +44,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
+* Josh McKenney - Taught us all of this - [jmckenney](https://github.com/jmckenney)
+* Darren Chan and Alex West - Helped - [DChan0319](https://github.com/DChan0319) [awwest](https://github.com/awwest)
 * etc
 
