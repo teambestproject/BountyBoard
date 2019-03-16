@@ -1,21 +1,31 @@
+.userprofile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 h3 {
     text-align: center;
     color: teal;
     font-size: 48px;
 }
 .column {
+    flex-grow: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin-left: 10%;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    margin-top: 2vh;
     padding-top: 2%;
     text-align: center;
     border-bottom: 6px solid rgba(20, 20, 88, 0.767);
     background-color: lightgrey;
     border-style: groove;
     font-size: 22px;
-    margin-top: 2%;
     width: 75%;
 }
 
-.list {
-    list-style-type: none;
+.profpic{
+    height: 10vh;
+    width:10vh;
 }
