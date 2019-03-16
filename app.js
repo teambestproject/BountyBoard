@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const bounty = require('./routes/bounty');
 
-mongoose.connect(process.env.MONGO_DB_LOCAL, { useNewUrlParser: true }).then(
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }).then(
     () => {console.log('Database is connected') },
     err => { console.log('Can not connect to the database' + err)}
 );
