@@ -115,7 +115,7 @@ router.post('/myPostedBounty/', function (req, res) {
 })
 
 router.get('/allBounty', function (req, res) {
-    Bounty.find({})
+    Bounty.find({ claimedBy: null })
         .then(function (dbBounties) {
             return res.json(dbBounties);
         })
