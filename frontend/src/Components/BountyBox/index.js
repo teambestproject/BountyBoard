@@ -62,6 +62,7 @@ class BountyBox extends Component {
         const { bounty } = this.state;
         return (
             <div className="container bountycontainer">
+                <h2 className='mb-2'>Open Bounties:</h2>
                 <div className="row buttonrow">
                     <div className="btn-group btn-group-toggle" data-toggle="buttons">
                         <label className={this.state.toggled === 'All' ? "btn btn-secondary active" : "btn btn-secondary"}>
