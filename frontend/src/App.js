@@ -20,8 +20,8 @@ require('dotenv').config();
 const firebaseApp = initializeApp(firebaseConfig);
 
 class App extends Component {
-  state = { 
-    isSignedIn: false, 
+  state = {
+    isSignedIn: true,
   }
   uiConfig = {
     signInFlow: "popup",
@@ -49,26 +49,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <div className="App">
-        {this.state.isSignedIn ? (
-          <span>
-            <Router>
-              <div>
-                <Navbar currentuser={firebaseApp.auth().currentUser} />
-                <Wrapper>
-                  <Route exact path="/" component={Welcome} />
-                  <Route exact path="/welcome" component={Welcome} />
-                  <Route exact path="/bounties" component={Bounties} />
-                  <Route exact path="/user" component={User} />
-                  <Route exact path="/create" component={Create} />
-                </Wrapper>
-                <Footer />
-              </div>
-            </Router>
-
-
-          </span>
-        ) : (
+        <div className="App">
+          {!this.state.isSignedIn ? (
             <span>
               <LoginPage />
               <StyledFirebaseAuth
@@ -76,8 +58,24 @@ class App extends Component {
                 firebaseAuth={firebaseApp.auth()}
               />
             </span>
-          )}
-      </div>
+          ) : (
+              <span>
+                <Router>
+                  <div>
+                    <Navbar currentuser={firebaseApp.auth().currentUser} />
+                    <Wrapper>
+                      <Route exact path="/" component={Welcome} />
+                      <Route exact path="/welcome" component={Welcome} />
+                      <Route exact path="/bounties" component={Bounties} />
+                      <Route exact path="/user" component={User} />
+                      <Route exact path="/create" component={Create} />
+                    </Wrapper>
+                    <Footer />
+                  </div>
+                </Router>
+              </span>
+            )}
+        </div>
       </Provider>
     )
   }
