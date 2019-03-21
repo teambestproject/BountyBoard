@@ -1,3 +1,7 @@
 .container {
     width: 100vw;
 }
+
+.mb-2 {
+    font-family: 'Rye', cursive;
+}

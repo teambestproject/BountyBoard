@@ -2,9 +2,10 @@
     background-image: url("../images/meeting.png");
     background-size: 100vh 100vw;
     height: 30vh;
+    font-family: 'Rye', cursive;
     }
 
-  h2 {
+h2 {
     width: 100%;
     font-size: 9vh;
     color: rgba(99, 243, 71, 0.712);
@@ -15,9 +16,9 @@
     1px -1px 0  rgba(0, 0, 0, 0.712),
     -1px 1px 0 rgba(0, 0, 0, 0.753),
     1px 1px 0  rgba(0, 0, 0, 0.753)
-  }
+    }
 
-  .about {
+.about {
     font-size: 3vh;
     padding: 3%;
-  }
+    }

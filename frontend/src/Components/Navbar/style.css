@@ -21,10 +21,11 @@ h1 {
     flex-grow: 1;
 }
 
-.title {
-  color: teal;
-  font-size: 10vh;
-  flex-grow: 5;
+#title {
+    color: black;
+    font-size: 5vh;
+    flex-grow: 5;
+    font-family: 'Rye', cursive;
 }
 
 .pages {

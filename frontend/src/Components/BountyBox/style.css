@@ -1,11 +1,15 @@
 .buttonrow{
-display:inline-block;
-margin-left: auto;
-margin-right: auto;
-width:50%;
-text-align: center;
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    text-align: center;
 }
 
 .bountyrow {
-margin: auto;
+    margin: auto;
+}
+
+.mb-2 {
+    font-family: 'Rye', cursive;
 }
